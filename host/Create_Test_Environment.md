@@ -1,7 +1,7 @@
 # Create Test Environment
 
 In this step you will create the Test Environment, which includes the following docker containers.
-Please read the details for each of the following:
+Please skim through the details for each of the following:
 
 1. MySql Server - see [Details](https://hub.docker.com/_/mysql)
 2. VPN Server - see [Details](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server)
