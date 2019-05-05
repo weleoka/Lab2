@@ -43,7 +43,7 @@ less compose1.yml
 # Download the images before running docker-compose with the following:
 docker pull mysql
 docker pull httpd 
-docker pull hwdsl2/ipsec-vpn-server
+docker pull kylemanna/openvpn
 docker pull resystit/bind9
 docker pull bugzilla/bugzilla-dev 
 ```
