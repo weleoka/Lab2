@@ -54,8 +54,9 @@ docker rm mysql-test web vpn dns bugzilla
 
 The above command will not return control to you.
 The system will seem hung, but it is not hung.
-
 Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
+
+If you want to quit the docker compose, you need to do a cntl-c.
 
 Optional Activity: Add a few more docker containers to the compose file.
 
