@@ -5,8 +5,8 @@ Please read the details for each of the following:
 
 1. MySql Server - see [Details](https://hub.docker.com/_/mysql)
 2. VPN Server - see [Details](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server)
-3. Web Server - see [Details](https://hub.docker.com/_/httpd
-3. Bugzilla Server - see [Details](https://hub.docker.com/r/bugzilla/bugzilla-dev
+3. Web Server - see [Details](https://hub.docker.com/_/httpd)
+3. Bugzilla Server - see [Details](https://hub.docker.com/r/bugzilla/bugzilla-dev)
 
 One popular free SQL server version is called MySQL, which we will use. 
 Bugzilla is a bug/issue/defect tracking system.  
