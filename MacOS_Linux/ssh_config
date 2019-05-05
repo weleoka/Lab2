@@ -1,0 +1,8 @@
+Host aws
+  HostName 35.177.156.60
+  Port 22
+  User ubuntu
+  StrictHostKeyChecking no
+  IdentityFile ~/.ssh/aws-keypair.pem
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR

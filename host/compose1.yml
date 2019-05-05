@@ -1,0 +1,15 @@
+version: "3.5"
+services:
+
+  mysql:
+    container_name: mysql
+    hostname: mysql
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pw
+    
+  bugzilla:
+    container_name: bugzilla
+    hostname: bugzilla
+    image: uneet/bugzilla-customisation
+    
