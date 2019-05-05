@@ -26,13 +26,17 @@ cd ~/Lab2/host
 
 Try to understand the docker compose file, with the following command:
 
+```bash
 less compose1.yml
+```
 
 "q" to quit
 
 3. Run the docker compose command
 
+```bash
 docker-compose -f compose1.yml up
+```
 
 The above command will not return control to you.
 The system will seem hung, but it is not hung.

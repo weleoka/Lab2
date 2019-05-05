@@ -8,16 +8,20 @@ Either type one command at a time, or copy and paste one command at a time and o
 
 2. You need to download the Lab2 files from GitHub.  You can do that with the following commands:
 
+```bash
 cd  
 git clone https://github.com/ToddBooth/Lab2 
 cd Lab2
+```
 
 3. You need to be able to download any updates
 
 From time to time Todd will update the GitHub files and you need to download the current version.  You can do that with the following commands:
 
+```bash
 cd ~/Lab2  
 git pull  
+```
 
 4. Warning about modifying files
 
