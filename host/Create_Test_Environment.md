@@ -6,7 +6,8 @@ Please skim through the details for each of the following:
 1. MySql Server - see [Details](https://hub.docker.com/_/mysql)
 2. Web Server - see [Details](https://hub.docker.com/_/httpd)
 3. VPN Server - see [Details](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server)
-3. Bugzilla Server - see [Details](https://hub.docker.com/r/bugzilla/bugzilla-dev)
+4. DSN Server - see [Details](https://hub.docker.com/r/resystit/bind9) 
+5. Bugzilla Server - see [Details](https://hub.docker.com/r/bugzilla/bugzilla-dev)
 
 One popular free SQL server version is called MySQL, which we will use. 
 Bugzilla is a bug/issue/defect tracking system.  
@@ -39,6 +40,7 @@ less compose1.yml
 docker pull mysql
 docker pull httpd 
 docker pull hwdsl2/ipsec-vpn-server
+docker pull resystit/bind9
 docker pull bugzilla/bugzilla-dev 
 ```
 
