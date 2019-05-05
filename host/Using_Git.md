@@ -9,7 +9,7 @@ Either type one command at a time, or copy and paste one command at a time and o
 2. You need to download the Lab2 files from GitHub.  You can do that with the following commands:
 
 cd  
-git clone github.com:ToddBooth/Lab2 
+git clone https://github.com/ToddBooth/Lab2 
 cd Lab2
 
 3. You need to be able to download any updates
