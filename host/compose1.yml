@@ -8,8 +8,18 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pw
     
+  web:
+    container_name: web
+    hostname: web
+    image: httpd
+
+  vpn:
+    container_name: vpn
+    hostname: vpn
+    image: hwdsl2/ipsec-vpn-server
+   
   bugzilla:
     container_name: bugzilla
     hostname: bugzilla
-    image: uneet/bugzilla-customisation
-    
+    image: bugzilla/bugzilla-dev
+
