@@ -17,9 +17,13 @@ services:
     container_name: vpn
     hostname: vpn
     image: hwdsl2/ipsec-vpn-server
+
+  dns:
+    container_name: dns
+    hostname: dns
+    image: resystit/bind9
    
   bugzilla:
     container_name: bugzilla
     hostname: bugzilla
     image: bugzilla/bugzilla-dev
-

@@ -35,7 +35,19 @@ less compose1.yml
 3. Run the docker compose command
 
 ```bash
-docker-compose -f compose1.yml up
+# Download the images before running docker-compose with the following:
+docker pull mysql
+docker pull httpd 
+docker pull hwdsl2/ipsec-vpn-server
+docker pull bugzilla/bugzilla-dev 
+```
+
+```bash
+# Create the Test Environment containers
+docker-compose -f ~/Lab2/host/compose1.yml up
+
+# Optional - if you want to delete the containers, execute this
+docker rm mysql-test web vpn dns bugzilla
 ```
 
 The above command will not return control to you.
