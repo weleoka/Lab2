@@ -11,7 +11,11 @@ Please skim through the details for each of the following:
 
 One popular free SQL server version is called MySQL, which we will use. 
 Bugzilla is a bug/issue/defect tracking system.  
-You will install Bugzilla but not configure it and we will not use it.
+You will install all the server software but you will not configure the services, since that is beyond the scope of this course.  For example you will install Bugzilla but not configure it.
+
+Optional Activity: Configure and use Bugzilla
+
+Optional Activity: Configure and use Bugzilla
 
 Optional Activity: Configure and use Bugzilla
 
