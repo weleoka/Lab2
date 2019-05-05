@@ -64,6 +64,4 @@ If you want to quit the docker compose, you need to do a cntl-c.
 
 Optional Activity: Add a few more docker containers to the docker compose file.
 
-4. Optional File Sharing Server
-
 Good Luck, Teacher Todd
