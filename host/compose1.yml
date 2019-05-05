@@ -19,14 +19,14 @@ services:
   vpn:
     container_name: vpn
     hostname: vpn
-    image: hwdsl2/ipsec-vpn-server
+    image: kylemanna/openvpn
 
   dns:
     container_name: dns
     hostname: dns
     image: resystit/bind9
    
-#  bugzilla:
-#    container_name: bugzilla
-#    hostname: bugzilla
-#    image: bugzilla/bugzilla-dev
+  bugzilla:
+    container_name: bugzilla
+    hostname: bugzilla
+    image: bugzilla/bugzilla-dev

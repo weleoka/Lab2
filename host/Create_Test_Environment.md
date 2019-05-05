@@ -5,7 +5,7 @@ Please skim through the details for each of the following:
 
 1. MySql Server - see [Details](https://hub.docker.com/_/mysql)
 2. Web Server - see [Details](https://hub.docker.com/_/httpd)
-3. VPN Server - see [Details](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server)
+3. VPN Server - see [Details](https://hub.docker.com/r/kylemanna/openvpn)
 4. DSN Server - see [Details](https://hub.docker.com/r/resystit/bind9) 
 5. Bugzilla Server - see [Details](https://hub.docker.com/r/bugzilla/bugzilla-dev)
 
@@ -62,6 +62,8 @@ Since you can no longer use the session, you should start a 2nd SSH client sessi
 
 If you want to quit the docker compose, you need to do a cntl-c.
 
-Optional Activity: Add a few more docker containers to the compose file.
+Optional Activity: Add a few more docker containers to the docker compose file.
+
+4. Optional File Sharing Server
 
 Good Luck, Teacher Todd
