@@ -2,8 +2,8 @@ sql-container()
 {
   apt update
   apt install -y git
-  git clone https://github.com/ToddBooth/Testing-IT-Systems-Lab-2
-  cd Testing-IT-Systems-Lab-2
+  git clone https://github.com/ToddBooth/Lab2
+  cd Lab2
   apt install -y mysql-client
 }
 

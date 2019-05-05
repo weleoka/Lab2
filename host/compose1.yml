@@ -1,8 +1,8 @@
 version: "3.5"
 services:
 
-  mysql:
-    container_name: mysql
+  mysql-test:
+    container_name: mysql-test
     hostname: mysql
     image: mysql
     environment:
