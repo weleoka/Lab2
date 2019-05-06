@@ -62,9 +62,9 @@ The above docker-compose command will not return control to you.
 The system will seem hung, but it is not hung.
 Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
 
-Optional: As an alternative to another session, you can use a session manager, such as tmux.
-
 If you want to quit the docker compose, you need to do a cntl-c.
+
+Optional: As an alternative to another session, you can use a session manager, such as tmux.
 
 Optional Activity: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
