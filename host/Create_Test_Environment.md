@@ -6,16 +6,18 @@ Please skim through the details for each of the following:
 1. MySql Server - see [Details](https://hub.docker.com/_/mysql)
 2. Web Server - see [Details](https://hub.docker.com/_/httpd)
 3. VPN Server - see [Details](https://hub.docker.com/r/kylemanna/openvpn)
-4. DSN Server - see [Details](https://hub.docker.com/r/resystit/bind9) 
+4. DNS Server - see [Details](https://hub.docker.com/r/resystit/bind9) 
 5. Bugzilla Server - see [Details](https://hub.docker.com/r/bugzilla/bugzilla-dev)
 
 One popular free SQL server version is called MySQL, which we will use. 
 Bugzilla is a bug/issue/defect tracking system.  
 You will install all the server software but you will not configure the services, since that is beyond the scope of this course.  For example you will install Bugzilla but not configure it.
 
-Optional Activity: Configure and use Bugzilla
+Optional Activity: Configure and use the Web server
 
-Optional Activity: Configure and use Bugzilla
+Optional Activity: Configure and use the VPN server
+
+Optional Activity: Configure and use the DNS server
 
 Optional Activity: Configure and use Bugzilla
 
@@ -56,12 +58,15 @@ docker-compose -f ~/Lab2/host/compose1.yml up
 docker rm mysql-test web vpn dns bugzilla
 ```
 
-The above command will not return control to you.
+The above docker-compose command will not return control to you.
 The system will seem hung, but it is not hung.
 Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
+
+Optional: As an alternative to another session, you can use a session manager, such as tmux.
 
 If you want to quit the docker compose, you need to do a cntl-c.
 
 Optional Activity: Add a few more docker containers to the docker compose file.
+To find candidates, surf to https://hub.docker.com and use the search field.
 
 Good Luck, Teacher Todd
