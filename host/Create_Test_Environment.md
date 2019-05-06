@@ -55,14 +55,14 @@ docker pull bugzilla/bugzilla-dev
 docker-compose -f ~/Lab2/host/compose1.yml up
 
 # Optional - if you want to delete the containers, execute this
-docker rm mysql-test web vpn dns bugzilla
+docker rm -f mysql-test web vpn dns bugzilla
 ```
 
 The above docker-compose command will not return control to you.
 The system will seem hung, but it is not hung.
-Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
-
 If you want to quit the docker compose, you need to do a cntl-c.
+
+Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
 
 Optional: As an alternative to another session, you can use a session manager, such as tmux.
 
