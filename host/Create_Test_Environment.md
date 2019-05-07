@@ -42,7 +42,6 @@ docker pull mysql
 docker pull httpd
 docker pull kylemanna/openvpn
 docker pull resystit/bind9
-docker pull achild/bugzilla
 ```
 
 We will use docker-compose to create the test environment SQL and Web servers.
@@ -79,7 +78,7 @@ Note that case is sensitive, so you must enter the following with capital "IPA" 
 
 ```bash
 docker inspect web | grep IPAddress
-```bash
+```
 
 In the following change 172.23.0.2 to whatever IP address was returned above.
 
@@ -108,7 +107,7 @@ You then need to run the OpenVPN initialize script
 docker run -v $OVPN_DATA:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://VPN.SERVERNAME.COM
 ```
 
-You then need to general the cryptograhic keys
+You then need to generate the cryptograhic keys
 
 ```bash
 docker run -v $OVPN_DATA:/etc/openvpn --log-driver=none --rm -it kylemanna/openvpn ovpn_initpki
@@ -121,11 +120,11 @@ Re-Enter New CA Key Passphrase:
 Common Name: Easy-RSA CA
 
 The cryptograhic keys will then be generated, which will take a few minutes.
-You will be asked and you can answer:
+You will be asked and you can answer as follows:
 
 Enter pass phrase for /etc/openvpn/pki/private/ca.key: phrase22
 
-Then again: 
+Then again:
 
 Enter pass phrase for /etc/openvpn/pki/private/ca.key: phrase22
 
@@ -156,8 +155,8 @@ You need to copy all three of the following lines, all at once.
 
 ```bash
 docker run -d --name dns -p 54:53 -p 54:53/udp \
-    -v /home/ubuntu/host/named.conf:/etc/bind/named.conf \
-    -v /home/ubuntu/host/example.com.db:/etc/bind/example.com.db resystit/bind9:latest
+    -v /home/ubuntu/Lab2/host/named.conf:/etc/bind/named.conf \
+    -v /home/ubuntu/Lab2/host/example.com.db:/etc/bind/example.com.db resystit/bind9:latest
 ```
 
 You now need to test the dns server.
@@ -174,7 +173,7 @@ docker exec dns nslookup example.com
 You should ignore the "can't resolve" message.
 If it worked, you should get back the IP address 93.184.216.34, which is the IP address of example.com
 
-## Configure and Verify that the BugZilla Gug Tracking Server is Running
+## Install BugZilla Gug Tracking Server
 
 Download a copy of the BugZilla GitHub file.
 
@@ -208,7 +207,7 @@ Give the image a label.
 Note that my image id will be different than yours, so use the first 4 hex digits of your image name.
 
 ```bash
-docker image tag 1b06 bugzilla
+docker image tag 2dbe bugzilla
 ```
 
 Now verify that the name "bugzilla" name has been added to the image, on the far left, under Repository.
@@ -221,30 +220,20 @@ Now from the image, run a BugZilla container.
 
 ```bash
 docker run --name bugzilla --hostname bugzilla bugzilla
+```
 
-# to remove the container, enter the following
+Ignore the error message.  The system will appear to be hung. 
+
+Start a new session from your client to the main VM Guest.
+In that session, do the following to remove the bugzilla docker container:
+
+```bash
 docker rm -f bugzilla
 ```
 
-Execute the following from the VM Guest to obtain the IP address of the BugZilla server.
-Note that case is sensitive, so you must enter the following with capital "IPA" and lower case "ddress".
+You have now done the installation, but not the configuration.
 
-```bash
-docker inspect bugzilla | grep IPAddress
-```bash
-
-In the following change 172.17.0.3 to whatever IP address was returned above.
-We are running the BugZilla database on a non standard port, 81, which is why you need ":81".
-
-```bash
-curl 172.17.0.2
-```
-
-You should receive a Web page.  
-You can ignore the configuration aborted message.
-You have not done the installation, but not the configuration.
-
-Optional Activity: Add a few more docker containers to the docker compose file.
+Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
 
 Good Luck, Teacher Todd
