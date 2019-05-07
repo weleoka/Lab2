@@ -12,9 +12,9 @@ Please skim through the detailed information for each of the following container
 One popular free SQL server version is called MySQL, which we will use.
 Bugzilla is a bug/issue/defect tracking system.
 You will install all the server software and perform a basic configuration of the services.
-For example you will install Bugzilla but not configure or use it.
+However, you will install Bugzilla but not configure or use it.
 
-Optional Activity: Configure and use the Web, VPN, DNS, and Bugzilla servers
+Optional Advanced Activities: Perform more advanced configuration for the Web, VPN, DNS, VPN, and/or the Bugzilla servers
 
 Docker compose is a tool allowing us to more easily manage the creation of several docker container at the same time.
 We will use the tool docker compose to create two of the containers.
@@ -35,10 +35,9 @@ less compose1.yml
 
 "q" to quit
 
-3. Run the docker compose command
+3. Download the images before running docker-compose with the following:
 
 ```bash
-# Download the images before running docker-compose with the following:
 docker pull mysql
 docker pull httpd
 docker pull kylemanna/openvpn
@@ -49,17 +48,21 @@ docker pull achild/bugzilla
 We will use docker-compose to create the test environment SQL and Web servers.
 We will use docker, on its own, to create the OpenVPN, DNS, and Bugzilla servers.
 
+4. Run the docker compose command
+
 ```bash
 # Create the Test Environment containers
 docker-compose -f ~/Lab2/host/compose1.yml up
+```
 
+```bash
 # Optional - if you want to delete all test environment containers, execute this
 docker rm -f mysql-test web vpn dns bugzilla
 ```
 
 The above docker-compose command will not return control to you.
 The system will seem hung, but it is not hung.
-If you want to quit the docker compose, you need to do a cntl-c.
+If you want to quit the docker compose application, you need to do a cntl-c.
 
 Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
 
@@ -173,21 +176,54 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 
 ## Configure and Verify that the BugZilla Gug Tracking Server is Running
 
-Download a copy of the BugZilla image.
+Download a copy of the BugZilla GitHub file.
 
 ```bash
-docker pull achild/bugzilla
+cd
+git clone https://github.com/chardek/docker-bugzilla.git
 ```
 
-Create a container from the image and run it.
+Change to the new directory
 
 ```bash
-docker run -d -p 81:80 --name bugzilla \
-    -v /tmp/msmtprc:/etc/msmtprc:ro \
-    -e MYSQL_DB=bugzilla \
-    -e MYSQL_USER=admin \
-    -e MYSQL_PWD=pw1 \
-    achild/bugzilla
+cd docker-bugzilla
+```
+
+Build BugZilla docker image from scratch
+
+```bash
+docker build .
+```
+
+This will take several minutes.
+Verify that the BugZilla docker image was created.
+
+```bash
+docker image ls
+```
+
+The image will be on the top and say "CREATED" recently.
+
+Give the image a label.
+Note that my image id will be different than yours, so use the first 4 hex digits of your image name.
+
+```bash
+docker image tag 1b06 bugzilla
+```
+
+Now verify that the name "bugzilla" name has been added to the image, on the far left, under Repository.
+
+```bash
+docker image ls
+```
+
+Now from the image, run a BugZilla container.
+
+```bash
+docker run --name bugzilla --hostname bugzilla bugzilla
+
+# to remove the container, enter the following
+docker rm -f bugzilla
 ```
 
 Execute the following from the VM Guest to obtain the IP address of the BugZilla server.
@@ -201,11 +237,12 @@ In the following change 172.17.0.3 to whatever IP address was returned above.
 We are running the BugZilla database on a non standard port, 81, which is why you need ":81".
 
 ```bash
-curl localhost:81
+curl 172.17.0.2
 ```
 
 You should receive a Web page.  
-You can ignore the configuration failure.
+You can ignore the configuration aborted message.
+You have not done the installation, but not the configuration.
 
 Optional Activity: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
