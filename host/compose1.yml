@@ -9,24 +9,10 @@ services:
     hostname: mysql
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=pw
+      - MYSQL_ROOT_PASSWORD="pw"
     
   web:
     container_name: web
     hostname: web
     image: httpd
 
-  vpn:
-    container_name: vpn
-    hostname: vpn
-    image: kylemanna/openvpn
-
-  dns:
-    container_name: dns
-    hostname: dns
-    image: resystit/bind9
-   
-  bugzilla:
-    container_name: bugzilla
-    hostname: bugzilla
-    image: bugzilla/bugzilla-dev

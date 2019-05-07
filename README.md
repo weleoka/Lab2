@@ -23,7 +23,7 @@ When students complete this lab, here is a short summary of what you can put in 
 
 In the Testing IT Systems course, I not only learned theoretical and general knowledge, I also learned hands-on practical skills, such as the following:
 
-I learned how to create a virtual test environment using virtual machine guests.  I performed this in the public cloud Amazon AWS.  I then learned how to create a test environment using docker containers to simulate hosts.  I learned how to use Git to exchange files with the developers and operations.  With docker containers, I was able to simulate five Linux hosts in under one megabyte and the docker container systems booted in just a few seconds.  I’ve learned how the scripts work, so that I can apply my knowledge to create new test environments.  I understand how docker hub works, so that I can integrate new servers into a test environment.  Then I learned how to load and reset the SQL data to be used in various test environments.
+I learned how to create a virtual test environment using virtual machine guests.  I performed this in the public cloud Amazon AWS.  I then learned how to create a test environment using docker containers to simulate hosts.  I learned how to use Git to exchange files with the developers and operations.  With docker containers, I was able to simulate five Linux hosts in under one megabyte and the docker container systems booted in just a few seconds.  I’ve learned how the scripts work, so that I can apply my knowledge to create new test environments.  I understand how docker hub works, so that I can integrate new servers into a test environment.  Then I learned how to load and reset the SQL test data to be used in various test environments.
 
 ## Create Amazon AWS student account
 
