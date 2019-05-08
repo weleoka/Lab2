@@ -51,7 +51,8 @@ We will use docker, on its own, to create the OpenVPN, DNS, and Bugzilla servers
 
 ```bash
 # Create the Test Environment containers
-docker-compose -f ~/Lab2/host/compose1.yml up
+cd ~/Lab2/host
+docker-compose -d -f compose1.yml up
 ```
 
 ```bash
@@ -59,13 +60,8 @@ docker-compose -f ~/Lab2/host/compose1.yml up
 docker rm -f mysql-test web vpn dns bugzilla
 ```
 
-The above docker-compose command will not return control to you.
-The system will seem hung, but it is not hung.
-If you want to quit the docker compose application, you need to do a cntl-c.
-
-Since you can no longer use the session, you should start a 2nd SSH client session, so please do that now.
-
-Optional: As an alternative to another session, you can use a session manager, such as tmux.
+Optional: You may wish to use a session manager, which supports multiple tabbed interfaces, such as tmux.
+You can find tutorials on YouTube.
 
 ## Verify that the Web server is Running
 
@@ -104,13 +100,18 @@ docker volume create --name $OVPN_DATA
 You then need to run the OpenVPN initialize script
 
 ```bash
-docker run -v $OVPN_DATA:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://VPN.SERVERNAME.COM
+docker run -v $OVPN_DATA:/etc/openvpn \
+    --log-driver=none \
+    --rm kylemanna/openvpn ovpn_genconfig \
+    -u udp://VPN.SERVERNAME.COM
 ```
 
 You then need to generate the cryptograhic keys
 
 ```bash
-docker run -v $OVPN_DATA:/etc/openvpn --log-driver=none --rm -it kylemanna/openvpn ovpn_initpki
+docker run -v $OVPN_DATA:/etc/openvpn \
+    --log-driver=none \
+    --rm -it kylemanna/openvpn ovpn_initpki
 ```
 
 The above will prompt you as following, and you can answer as the following shows:
