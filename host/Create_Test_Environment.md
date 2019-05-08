@@ -52,7 +52,7 @@ We will use docker, on its own, to create the OpenVPN, DNS, and Bugzilla servers
 ```bash
 # Create the Test Environment containers
 cd ~/Lab2/host
-docker-compose -d -f compose1.yml up
+docker-compose -f compose1.yml up -d
 ```
 
 ```bash
