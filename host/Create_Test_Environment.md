@@ -194,6 +194,11 @@ Build BugZilla docker image from scratch
 ```bash
 docker build .
 ```
+Alternativly run 
+```bash
+docker build -t bugzilla .
+```
+To also tag the file with the name "bugzilla"
 
 This will take several minutes.
 Verify that the BugZilla docker image was created.
