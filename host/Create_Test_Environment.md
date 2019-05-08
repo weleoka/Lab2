@@ -194,7 +194,7 @@ Build BugZilla docker image from scratch
 ```bash
 docker build .
 ```
-Alternativly run 
+Alternatively run 
 ```bash
 docker build -t bugzilla .
 ```
