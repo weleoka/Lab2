@@ -1,5 +1,6 @@
 # Create the Test Environment containers
-# docker-compose -f ~/Lab2/host/compose1.yml up
+# cd ~/Lab2/host
+# docker-compose -f compose1.yml up
 
 version: "3.5"
 services:
