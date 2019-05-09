@@ -64,6 +64,11 @@ docker rm -f mysql-test web vpn dns bugzilla
 Optional: You may wish to use a session manager, which supports multiple tabbed interfaces, such as tmux.
 You can find tutorials on YouTube.
 
+## Load Test Data into Test Environment
+
+In this task, you will load actual SQL test data into your Test Environment
+Perform the instructions in the file named, sql_container/Load_SQL_Server.md
+
 ## Verify that the Web server is Running
 
 In this task, you will verify that the Web Server is running and serving web pages.
