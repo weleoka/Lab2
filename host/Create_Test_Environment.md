@@ -42,6 +42,7 @@ docker pull mysql
 docker pull httpd
 docker pull kylemanna/openvpn
 docker pull resystit/bind9
+docker pull bugzilla
 ```
 
 We will use docker-compose to create the test environment SQL and Web servers.
