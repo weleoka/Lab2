@@ -14,7 +14,7 @@ Bugzilla is a bug/issue/defect tracking system.
 You will install all the server software and perform a basic configuration of the services.
 However, you will install Bugzilla but not configure or use it.
 
-Optional Advanced Activities: Perform more advanced configuration for the Web, VPN, DNS, VPN, and/or the Bugzilla servers
+Optional Advanced Activities: Perform more advanced configuration for the mySql Web, VPN, DNS, and/or the Bugzilla servers
 
 Docker compose is a tool allowing us to more easily manage the creation of several docker container at the same time.
 We will use the tool docker compose to create two of the containers.
@@ -68,6 +68,7 @@ You can find tutorials on YouTube.
 In this task, you will verify that the Web Server is running and serving web pages.
 We will use a command line tool to make a request to get a Web page.
 The tool is called curl.
+
 Since curl is not a Web browser, you will see all the html tags.
 Execute the following from the VM Guest to obtain the IP address of the Web server.
 Note that case is sensitive, so you must enter the following with capital "IPA" and lower case "ddress".
