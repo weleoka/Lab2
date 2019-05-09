@@ -191,17 +191,12 @@ Change to the new directory
 cd docker-bugzilla
 ```
 
-Build BugZilla docker image from scratch
+Build BugZilla docker image from scratch.
+The -t will name the image bugzilla.
 
-```bash
-docker build .
-```
-Alternatively run 
 ```bash
 docker build -t bugzilla .
 ```
-To also tag the file with the name "bugzilla"
-
 This will take several minutes.
 Verify that the BugZilla docker image was created.
 
@@ -210,13 +205,6 @@ docker image ls
 ```
 
 The image will be on the top and say "CREATED" recently.
-
-Give the image a label.
-Note that my image id will be different than yours, so use the first 4 hex digits of your image name.
-
-```bash
-docker image tag 2dbe bugzilla
-```
 
 Now verify that the name "bugzilla" name has been added to the image, on the far left, under Repository.
 
