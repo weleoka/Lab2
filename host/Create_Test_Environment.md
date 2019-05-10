@@ -74,6 +74,17 @@ cd ~/Lab2/host
 docker-compose -f compose1.yml up -d
 ```
 
+The above flag "-d" starts it in the background, so you don't see the log file messages.
+Execute the docker command to show the log files for the container web.
+
+If stuck, here is the hint:
+
+```bash
+# Create the Test Environment containers
+docker logs web
+docker logs mysql-test
+```
+
 How would you delete all test environment containers, in order to start over?
 
 If stuck, here is the hint.
@@ -96,6 +107,10 @@ The tool is called curl.
 
 Since curl is not a Web browser, you will see all the html tags.
 I.E., curl reads, but does not render HTML code.
+Use curl to retrieve the home web page.
+
+If stuck, here is the hint.
+
 Execute the following from the Host to obtain the IP address of the Web server.
 Note that case is sensitive, so you must enter the following with capital "IPA" and lower case "ddress".
 
@@ -112,6 +127,11 @@ curl 172.23.0.2
 ## Step 5. Configure and Verify that the OpenVpn Server is Running
 
 The docker compose started most containers, but did not start the OpenVPN container, so we'll start that manually.
+
+Try to follow the Web page directions on your own to create the OpenVPN Container.
+[Here is the URL](https://hub.docker.com/r/kylemanna/openvpn).
+
+If stuck, here is the hint.
 
 You need to first set an environment variable.
 
@@ -166,7 +186,11 @@ Finally, you need to try running the OpenVPN docker container:
 docker run -v $OVPN_DATA:/etc/openvpn -d -p 1194:1194/udp --cap-add=NET_ADMIN kylemanna/openvpn
 ```
 
-Check to see if the vpn container is running and it should say, "Up"
+Check to see if the vpn container is running.
+
+Here is the hint:
+
+The following should say, "Up"
 
 ```bash
 docker ps -a | grep vpn
@@ -178,13 +202,34 @@ You first need to configure the DNS server.
 Todd has created an initial configuration.
 As an optional excercise for advanced students, you can modify Todd's configuration.
 Documentation for the DNS server is found at [This URL](https://help.ubuntu.com/lts/serverguide/dns-configuration.html.en).
-Todd's configuration file is found in /home/ubuntu/Lab2/host/named.conf.
-You need to copy all three of the following lines, all at once.
+Todd's configuration files is found in /home/ubuntu/Lab2/host/named.conf and example.com.db.
+
+Start the DNS Container.
+
+If stuck, here is the hint:
 
 ```bash
-docker run -d --name dns -p 54:53 -p 54:53/udp \
+docker run -d --hostname dns --name dns -p 54:53 -p 54:53/udp \
     -v /home/ubuntu/Lab2/host/named.conf:/etc/bind/named.conf \
     -v /home/ubuntu/Lab2/host/example.com.db:/etc/bind/example.com.db resystit/bind9:latest
+```
+
+If you get an error that the container name dns is already in use, first delete it.
+
+If stuck, here is the hint:
+
+```bash
+docker rm -f dns
+```
+
+You started docker run in the background, since you used the "-d" flag.
+So you should take a look at your logs, since you missed the startup messages.
+Look at the logs.
+
+If stuck, here is the hint:
+
+```bash
+docker logs dns
 ```
 
 You now need to test the dns server.
@@ -192,13 +237,15 @@ Try resolving the name "example.com"
 
 In the following, "docker exec dns" means we want to execute a command in the dns container.
 "nslookup" is a DNS testing tool.
-"nslookup example.com" will attempt to find the IP address, for the example.com host.
+Use "nslookup example.com" to  attempt to find the IP address.
+
+If stuck, here is the hint:
 
 ```bash
 docker exec dns nslookup example.com
 ```
 
-You should ignore the "can't resolve" message.
+You should ignore the "can't resolve (null)" message.
 If it worked, you should get back the IP address 93.184.216.34, which is the IP address of example.com
 
 ## Step 7. Install BugZilla Gug Tracking Server
