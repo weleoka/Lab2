@@ -16,7 +16,7 @@ However, you will install Bugzilla but not configure or use it.
 
 Optional Advanced Activities: Perform more advanced configuration for the mySql Web, VPN, DNS, and/or the Bugzilla servers
 
-## Step 1 - Review Docker Compose
+## Step 1. Review Docker Compose
 
 Docker compose is a tool allowing us to more easily manage the creation of several docker container at the same time.
 We will use the tool docker compose to create two of the containers.
@@ -37,7 +37,7 @@ less compose1.yml
 
 "q" to quit
 
-## Step 2 Pull Docker Images
+## Step 2. Pull Docker Images
 
 Download the images before running docker-compose with the following:
 
