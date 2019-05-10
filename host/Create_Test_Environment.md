@@ -267,6 +267,9 @@ If stuck, here is the hint:
 docker rm -f web
 ```
 
+Prior to installing BugZilla, you should configure your firewall.
+Todd will update this file with those instructions soon.
+
 Download a copy of the BugZilla GitHub files.
 
 ```bash
@@ -318,7 +321,7 @@ If stuck, here is the hint:
 docker logs bugzilla
 ```
 
-Note that the log states "No such file or directory".
+Note that the log states "No such file or directory" for the file params, so there is something wrong.
 
 Enter the container and run ./checksetup.pl.
 
@@ -331,8 +334,8 @@ docker exec -it bugzilla bash
 ./checksetup.pl
 ```
 
-You'll see an error that there is a problem with MySQL, which is not running.
-So install MySQL server.
+You'll see an error that there is a problem with MySQL, which is perhaps not running.
+So let's install MySQL server.
 
 If stuck, here is the hint.
 
@@ -341,9 +344,11 @@ apt update
 apt install -y mysql-server
 ```
 
-Use the database root user password of "bugs".
+There is a prompt for the MySQL root user's password.
+Enter what you want.
+For these instructions, it will be assumed you entered, "bugs".
 
-After the above completes, run ./checksetup.pl again.
+After the above completes, try running ./checksetup.pl again.
 
 If stuck, here is the hint again:
 
@@ -361,7 +366,7 @@ service mysql status
 ```
 
 You will see that the server is stopped.
-So go ahead and state the MySql server.
+So go ahead and start the MySql server.
 
 If stuck, here is the hint:
 
@@ -377,7 +382,7 @@ If stuck, here is the hint:
 service mysql status
 ```
 
-That should look better.
+That should look much better.
 Now try running the setup script again.
 
 If stuck, here is the hint again:
@@ -387,7 +392,7 @@ If stuck, here is the hint again:
 ```
 
 It still fails.
-We need to create the user bugs and give bugs all prvileges.
+We need to create the user bugs and give bugs all privleges.
 
 If stuck, here is the hint:
 
@@ -414,10 +419,10 @@ nano localconfig
 ```
 
 # find and edit the line to the following:
-$db_pass = 'bugs';
+$webservergroup = 'www-data';
 
 # find and edit the line to the following:
-$webservergroup = 'www-data';
+$db_pass = 'bugs';
 
 Save the file and quit Nano.
 
@@ -429,7 +434,10 @@ If stuck, here is the hint again:
 ./checksetup.pl
 ```
 
-It should now work and prompt you for your email, name, and password.
+It should now work and prompt you for the Administrator's email, name, and password.
+Todd used the following, as an example:
+
+Email: Admin101@ToddBooth.Com
 
 For the password, use the following:
 
@@ -460,7 +468,16 @@ You have now done the installation and the basic configuration, for BugZilla.
 Now access the bugzilla container from a regular browser.
 From the SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 
-It will fail when you try to create an account and Todd is trying to debug that now.
+Then enter your Adminstrator email and password, into the login box.
+Todd used:
+
+Email: Admin101@ToddBooth.Com
+
+Administrator pw: bugsbugs
+
+This will bring you to the Administrator's web page.
+
+You should then click on the "Parameter" link and configure the parameters:
 
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
