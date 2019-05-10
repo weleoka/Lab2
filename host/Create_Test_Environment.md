@@ -291,14 +291,14 @@ docker image ls
 The image will be on the top and say "CREATED" recently.
 
 Now from the image, run a BugZilla container.
-Git it a docker container name and a hostname.
+Give it a docker container name and a hostname.
 
 If stuck, here is the hint:
 
 The -d parameter runs the container in the background.
 
 ```bash
-docker run -d --name bugzilla --hostname bugzilla bugzilla
+docker run -d -p 80:80/tcp --name bugzilla --hostname bugzilla bugzilla
 ```
 
 Review the log file messages.
@@ -309,45 +309,147 @@ If stuck, here is the hint:
 docker logs bugzilla
 ```
 
-Note that the log states to run ./checksetup.pl
+Note that the log states "No such file or directory".
+
 Enter the container and run ./checksetup.pl.
 
 If stuck, here is the hint:
 
 ```bash
+# first, enter into the container
 docker exec -it bugzilla bash
-```
 
-After the above completes, run ./checksetup.pd.
-
-If stuck, here is the hint.
-
-```bash
 ./checksetup.pl
 ```
 
-You'll see an error that there is a problem with MySQL.
+You'll see an error that there is a problem with MySQL, which is not running.
 So install MySQL server.
 
 If stuck, here is the hint.
 
 ```bash
+apt update
 apt install -y mysql-server
 ```
 
-Use the database password of "bugs".
+Use the database root user password of "bugs".
 
-Todd was not able to resolve the next error, so if you can resolve it, please email Todd.
+After the above completes, run ./checksetup.pl again.
 
-When you are done with the container, remove the bugzilla container.
+If stuck, here is the hint again:
+
+```bash
+./checksetup.pl
+```
+
+The error for MySql still exists.
+So try checking the status of the MySql server.
 
 If stuck, here is the hint:
 
 ```bash
-docker rm -f bugzilla
+service mysql status
 ```
 
-You have now done the installation, but not the configuration, for BugZilla.
+You will see that the server is stopped.
+So go ahead and state the MySql server.
+
+If stuck, here is the hint:
+
+```bash
+service mysql start
+```
+
+Now check the status again:
+
+If stuck, here is the hint:
+
+```bash
+service mysql status
+```
+
+That should look better.
+Now try running the setup script again.
+
+If stuck, here is the hint again:
+
+```bash
+./checksetup.pl
+```
+
+It still fails.
+We need to create the user bugs and give bugs all prvileges.
+
+If stuck, here is the hint:
+
+```bash
+# use the password, bugs
+mysql -p
+
+# The last field, 'bugs' is the password
+GRANT ALL PRIVILEGES ON *.* TO 'bugs'@'localhost' IDENTIFIED BY 'bugs';
+quit
+```
+
+# You need to change the default password to bugs in the localconfig file
+
+You'll need to first install an editor
+
+If stuck, here is the hint:
+
+```bash
+apt install -y nano
+
+# edit the file
+nano localconfig
+```
+
+# find and edit the line to the following:
+$db_pass = 'bugs';
+
+# find and edit the line to the following:
+$webservergroup = 'www-data';
+
+Save the file and quit Nano.
+
+Run the init script again
+
+If stuck, here is the hint again:
+
+```bash
+./checksetup.pl
+```
+
+It should now work and prompt you for your email, name, and password.
+
+For the password, use the following:
+
+Administrator pw: bugsbugs
+
+Now test bugszilla to see what web page is default homepage is returned.
+
+In a new session, get access to the Host.
+
+Find the IPAddress of the bugzilla container.
+
+If stuck, here is the hint:
+
+```bash
+docker inspect bugzilla | grep IPAddress
+```
+
+Using the bugzilla IPAddress, simulate a user requesting the homepage, with curl.
+
+If stuck, here is the hint:
+
+```bash
+curl 172.17.0.3
+```
+
+Now access the bugzilla container from a regular browser.
+From the SSH clint, start up a Web browser, and surf to the public IP address of your Host.
+
+You have now done the installation and the basic configuration, for BugZilla.
 
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
