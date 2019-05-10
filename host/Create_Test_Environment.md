@@ -463,4 +463,6 @@ From the SSH client node, start up a Web browser, and surf to the public IP addr
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
 
+There will be more steps to the lab 2, however you'll need to get bugzilla installed and configured first.
+
 Good Luck, Teacher Todd
