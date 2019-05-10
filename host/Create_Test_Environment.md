@@ -256,10 +256,10 @@ docker exec dns nslookup example.com
 You should ignore the "can't resolve (null)" message.
 If it worked, you should get back the IP address 93.184.216.34, which is the IP address of example.com
 
-## Step 7. Install BugZilla Gug Tracking Server
+## Step 7. Install the BugZilla Bug Tracking Server
 
 There is a compatibility problem between the Web server and the BugZilla server, since both are competing for port 80.
-So you need to remove your Web server before continuing below.
+So you need to remove your Web server container before continuing below.
 
 If stuck, here is the hint:
 
@@ -458,7 +458,7 @@ curl 172.17.0.3
 You have now done the installation and the basic configuration, for BugZilla.
 
 Now access the bugzilla container from a regular browser.
-From the SSH clint, start up a Web browser, and surf to the public IP address of your Host.
+From the SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
