@@ -110,3 +110,6 @@ docker cp test_data_2.sql sql:root/.
 ```
 
 Follow the above instructions, regarding loading test data, to load your own test data.
+Review the test_data_2.sql to see how to write an SQL Query, which displays a given student record.
+Then execute your own SQL Query, which displays only your student record and grade.
+
