@@ -116,18 +116,27 @@ Use curl to retrieve the home web page.
 
 If stuck, here is the hint.
 
-Execute the following from the Host to obtain the IP address of the Web server.
-Note that case is sensitive, so you must enter the following with capital "IPA" and lower case "ddress".
+Note that the Web server was started on port 81, so that it does not conflict with the upcoming BugZilla Web server, which runs on port 80.
+The compose1.yml file did a port mapping from port 81 on the host to port 80 on the container.
+So you just need to surf to port 81 on the host to see if the Web server is running.
+So you need to add the port number to the curl command.
+
+If stuck, here is the hint.
 
 ```bash
-docker inspect web | grep IPAddress
+curl localhost:81
 ```
 
-In the following change 172.23.0.2 to whatever IP address was returned above.
+It should return the following raw HTML information (I.E., the html is not rendered):
 
-```bash
-curl 172.23.0.2
-```
+<html><body><h1>It works!</h1></body></html>
+
+Now from your client, start a Web brower and in the URL field, enter the IP address of your host with the port 81 at the end.
+Here is an example:
+
+1.1.1.1:81
+
+You should see, "It works!"
 
 ## Step 5. Configure and Verify that the OpenVpn Server is Running
 
@@ -257,15 +266,6 @@ You should ignore the "can't resolve (null)" message.
 If it worked, you should get back the IP address 93.184.216.34, which is the IP address of example.com
 
 ## Step 7. Install the BugZilla Bug Tracking Server
-
-There is a compatibility problem between the Web server and the BugZilla server, since both are competing for port 80.
-So you need to remove your Web server container before continuing below.
-
-If stuck, here is the hint:
-
-```bash
-docker rm -f web
-```
 
 Prior to installing BugZilla, you should configure your firewall.
 Todd will update this file with those instructions soon.

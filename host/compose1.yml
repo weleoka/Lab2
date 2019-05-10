@@ -16,4 +16,5 @@ services:
     container_name: web
     hostname: web
     image: httpd
-
+    ports:
+      - "81:80"
