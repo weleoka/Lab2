@@ -14,6 +14,11 @@ Bugzilla is a bug/issue/defect tracking system.
 You will install all the server software and perform a basic configuration of the services.
 However, you will install Bugzilla but not configure or use it.
 
+The instructions will ask you to do something.  
+Try to do things without reading the details hints.
+I.E., only use the details hints when you get stuck.
+If anything does not work properly, please send Todd an email.
+
 Optional Advanced Activities: Perform more advanced configuration for the mySql Web, VPN, DNS, and/or the Bugzilla servers
 
 ## Step 1. Review Docker Compose
@@ -21,7 +26,9 @@ Optional Advanced Activities: Perform more advanced configuration for the mySql 
 Docker compose is a tool allowing us to more easily manage the creation of several docker container at the same time.
 We will use the tool docker compose to create two of the containers.
 
-1. Change to the following directory
+1. Change to the directory Lab2
+
+If stuck, here is the hint.
 
 ```bash
 cd ~/Lab2/host
@@ -29,24 +36,26 @@ cd ~/Lab2/host
 
 2. Review the docker compose file
 
-Try to understand the docker compose file, with the following command:
+Try to understand the docker compose file.
+
+If stuck, here is the hint, on one way to review it
 
 ```bash
 less compose1.yml
+# "q" to quit
 ```
-
-"q" to quit
 
 ## Step 2. Pull Docker Images
 
-Download the images before running docker-compose with the following:
+Download the images before running docker-compose.
+
+If stuck, here is the hint:
 
 ```bash
 docker pull mysql
 docker pull httpd
 docker pull kylemanna/openvpn
 docker pull resystit/bind9
-docker pull bugzilla
 ```
 
 We will use docker-compose to create the test environment SQL and Web servers.
@@ -54,19 +63,30 @@ We will use docker, on its own, to create the OpenVPN, DNS, and Bugzilla servers
 
 ## Step 3. Execute the Docker Compose Command
 
+If stuck, here is the hint.
+
+The -d puts the process in the background.
+If you don't use -d, you need to open a 2nd client to Host SSH session.
+
 ```bash
 # Create the Test Environment containers
 cd ~/Lab2/host
 docker-compose -f compose1.yml up -d
 ```
 
+How would you delete all test environment containers, in order to start over?
+
+If stuck, here is the hint.
+
 ```bash
 # Optional - if you want to delete all test environment containers, execute this
 docker rm -f mysql-test web vpn dns bugzilla
 ```
 
-Optional: You may wish to use a session manager, which supports multiple tabbed interfaces, such as tmux.
-You can find tutorials on YouTube.
+Optional: If you wish to be a professional, working with Linux, it is recommended that you learn to use a session manager, which supports multiple tabbed interfaces, such as tmux.
+[Here is the URL](https://gist.github.com/MohamedAlaa/2961058) to a Tmux Cheat Sheet.
+
+If you find a good video tutorial, please let Todd know and he'll add it to this section.
 
 ## Step 4. Verify that the Web server is Running
 
@@ -75,7 +95,8 @@ We will use a command line tool to make a request to get a Web page.
 The tool is called curl.
 
 Since curl is not a Web browser, you will see all the html tags.
-Execute the following from the VM Guest to obtain the IP address of the Web server.
+I.E., curl reads, but does not render HTML code.
+Execute the following from the Host to obtain the IP address of the Web server.
 Note that case is sensitive, so you must enter the following with capital "IPA" and lower case "ddress".
 
 ```bash
@@ -182,7 +203,7 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 
 ## Step 7. Install BugZilla Gug Tracking Server
 
-Download a copy of the BugZilla GitHub file.
+Download a copy of the BugZilla GitHub files.
 
 ```bash
 cd
@@ -224,14 +245,14 @@ docker run --name bugzilla --hostname bugzilla bugzilla
 
 Ignore the error message.  The system will appear to be hung. 
 
-Start a new session from your client to the main VM Guest.
+Start a new session from your client to the Host.
 In that session, do the following to remove the bugzilla docker container:
 
 ```bash
 docker rm -f bugzilla
 ```
 
-You have now done the installation, but not the configuration.
+You have now done the installation, but not the configuration, for BugZilla.
 
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
