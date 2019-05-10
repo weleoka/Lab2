@@ -16,6 +16,8 @@ However, you will install Bugzilla but not configure or use it.
 
 Optional Advanced Activities: Perform more advanced configuration for the mySql Web, VPN, DNS, and/or the Bugzilla servers
 
+## Step 1 - Review Docker Compose
+
 Docker compose is a tool allowing us to more easily manage the creation of several docker container at the same time.
 We will use the tool docker compose to create two of the containers.
 
@@ -35,7 +37,9 @@ less compose1.yml
 
 "q" to quit
 
-3. Download the images before running docker-compose with the following:
+## Step 2 Pull Docker Images
+
+Download the images before running docker-compose with the following:
 
 ```bash
 docker pull mysql
@@ -48,7 +52,7 @@ docker pull bugzilla
 We will use docker-compose to create the test environment SQL and Web servers.
 We will use docker, on its own, to create the OpenVPN, DNS, and Bugzilla servers.
 
-4. Run the docker compose command
+## Step 3. Execute the Docker Compose Command
 
 ```bash
 # Create the Test Environment containers
@@ -64,12 +68,7 @@ docker rm -f mysql-test web vpn dns bugzilla
 Optional: You may wish to use a session manager, which supports multiple tabbed interfaces, such as tmux.
 You can find tutorials on YouTube.
 
-## Load Test Data into Test Environment
-
-In this task, you will load actual SQL test data into your Test Environment
-Perform the instructions in the file named, sql_container/Load_SQL_Server.md
-
-## Verify that the Web server is Running
+## Step 4. Verify that the Web server is Running
 
 In this task, you will verify that the Web Server is running and serving web pages.
 We will use a command line tool to make a request to get a Web page.
@@ -89,7 +88,7 @@ In the following change 172.23.0.2 to whatever IP address was returned above.
 curl 172.23.0.2
 ```
 
-## Configure and Verify that the OpenVpn Server is Running
+## Step 5. Configure and Verify that the OpenVpn Server is Running
 
 The docker compose started most containers, but did not start the OpenVPN container, so we'll start that manually.
 
@@ -152,7 +151,7 @@ Check to see if the vpn container is running and it should say, "Up"
 docker ps -a | grep vpn
 ```
 
-## Configure and Verify that the DSN Server is Running
+## Step 6. Configure and Verify that the DSN Server is Running
 
 You first need to configure the DNS server.
 Todd has created an initial configuration.
@@ -181,7 +180,7 @@ docker exec dns nslookup example.com
 You should ignore the "can't resolve" message.
 If it worked, you should get back the IP address 93.184.216.34, which is the IP address of example.com
 
-## Install BugZilla Gug Tracking Server
+## Step 7. Install BugZilla Gug Tracking Server
 
 Download a copy of the BugZilla GitHub file.
 
