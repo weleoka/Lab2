@@ -54,13 +54,12 @@ less compose1.yml
 
 Download the images before running docker-compose.
 
-If stuck, here is the hint:
-
 ```bash
 docker pull mysql
 docker pull httpd
 docker pull kylemanna/openvpn
 docker pull resystit/bind9
+docker pull chardek/bugzilla
 ```
 
 We will use docker-compose to create the test environment SQL and Web servers.
@@ -99,10 +98,11 @@ If stuck, here is the hint.
 docker rm -f mysql-test web vpn dns bugzilla
 ```
 
-Optional: If you wish to be a professional, working with Linux, it is recommended that you learn to use a session manager, which supports multiple tabbed interfaces, such as tmux.
+Optional: If you wish to be a professional, working with Linux, it is recommended that you learn to use a window session manager, which supports multiple tabbed interfaces, such as tmux.
 [Here is the URL](https://gist.github.com/MohamedAlaa/2961058) to a Tmux Cheat Sheet.
 
-If you find a good video tutorial, please let Todd know and he'll add it to this section.
+If you find a good tmux video tutorial for beginners, please let Todd know and he'll add it to this section.
+Todd reviewed several YouTube tmux videos but didn't like them.
 
 ## Step 4. Verify that the Web server is Running
 
@@ -272,13 +272,17 @@ cd docker-bugzilla
 ```
 
 Build BugZilla docker image from scratch.
+
+If stuck, here is the hint:
+
 The -t will name the image bugzilla.
 
 ```bash
 docker build -t bugzilla .
 ```
+
 This will take several minutes.
-Verify that the BugZilla docker image was created.
+Verify that the BugZilla docker image was created and verify that the name "bugzilla" name has been added to the image, on the far left, under Repository.
 
 ```bash
 docker image ls
@@ -286,22 +290,58 @@ docker image ls
 
 The image will be on the top and say "CREATED" recently.
 
-Now verify that the name "bugzilla" name has been added to the image, on the far left, under Repository.
-
-```bash
-docker image ls
-```
-
 Now from the image, run a BugZilla container.
+Git it a docker container name and a hostname.
+
+If stuck, here is the hint:
+
+The -d parameter runs the container in the background.
 
 ```bash
-docker run --name bugzilla --hostname bugzilla bugzilla
+docker run -d --name bugzilla --hostname bugzilla bugzilla
 ```
 
-Ignore the error message.  The system will appear to be hung. 
+Review the log file messages.
 
-Start a new session from your client to the Host.
-In that session, do the following to remove the bugzilla docker container:
+If stuck, here is the hint:
+
+```bash
+docker logs bugzilla
+```
+
+Note that the log states to run ./checksetup.pl
+Enter the container and run ./checksetup.pl.
+
+If stuck, here is the hint:
+
+```bash
+docker exec -it bugzilla bash
+```
+
+After the above completes, run ./checksetup.pd.
+
+If stuck, here is the hint.
+
+```bash
+./checksetup.pl
+```
+
+You'll see an error that there is a problem with MySQL.
+So install MySQL server.
+
+If stuck, here is the hint.
+
+```bash
+apt install -y mysql-server
+```
+
+Use the database password of "bugs".
+
+Todd was not able to resolve the next error, so if you can resolve it, please email Todd.
+
+When you are done with the container, remove the bugzilla container.
+
+If stuck, here is the hint:
 
 ```bash
 docker rm -f bugzilla
