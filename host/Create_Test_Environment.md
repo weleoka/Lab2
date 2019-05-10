@@ -460,6 +460,8 @@ You have now done the installation and the basic configuration, for BugZilla.
 Now access the bugzilla container from a regular browser.
 From the SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 
+It will fail when you try to create an account and Todd is trying to debug that now.
+
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
 
