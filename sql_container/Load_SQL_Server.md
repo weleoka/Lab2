@@ -3,7 +3,7 @@
 In this step, you will load the SQL Server with the initial test data.  If needed, login to the VM Guest with a new SSH session.  
 Perform the following in order to load the SQL Server with the initial test data:
 
-## Step 1. Login to your VM Guest via an SSH client session
+## Step 1. Login to your Host via an SSH client session
 
 The instructions were provided previously.
 
@@ -78,7 +78,8 @@ In this step, you will create your own SQL Test Data and load that data into the
 
 Please do not modify any of the files that were provided to you via git.
 The reason is, Todd will modify the git files from time to time, to resolve defects.
-Then, you will download the updated files with the following command, which must be executed from the VM host, not the containers.
+If Todd fixes a problem you report, Todd might ask you to pull the new updated files.
+Then, you will download the updated files with the following command, which must be executed from the Host, not the containers.
 
 ```bash
 git pull
@@ -86,7 +87,7 @@ git pull
 
 However, if you modify files, they will conflict with Todd's updated files.
 So instead, you will make copies of Todd's files, and then you will update your own files.
-First, on the host (not the container), please make copies of the following file:
+First, on the Host, please make copies of the following file:
 
 ```bash
 cd ~/Lab2/sql_container
@@ -94,6 +95,8 @@ cp test_data_1.sql test_data_2.sql
 ```
 
 Now you need to add rows to the test data.  
+Review the test_data_2.sql to see how to write an SQL Query, which displays a given student record.
+Then execute your own SQL Query, which displays only your student record and grade.
 So edit the new test_data_2.sql test data with the editor, "Nano".
 
 ```bash
@@ -103,11 +106,38 @@ nano test_data_2.sql
 In the test data file, add a student row, with your name and student ID.
 Add a grade row, where you received a VG.
 When you are done editing the new file, copy the new file to the container.
-Enter these commands, to load your own test data.
+Enter these commands, to copy your new file to the container:
 
 ```bash
-cd ~/Lab2/sql_containerql sql:root/.
+cd ~/Lab2/sql_container
+docker cp test_data_2.sql mysql-test:root/.
 ```
 
-Review the test_data_2.sql to see how to write an SQL Query, which displays a given student record.
-Then execute your own SQL Query, which displays only your student record and grade.
+## Step 6. Login to MySQL Server.  
+
+Now enter into the mysql-test running container:
+
+```bash
+docker exec -it mysql-test bash
+```
+
+In the Container, change to the root directory:
+
+```bash
+cd /root
+```
+
+Execute the MySql client.
+When prompted, the password is "pw".  Here is the command:
+
+```bash
+mysql -p
+```
+
+To load the test environment's SQL test data, run the following, and be sure to enter your new test data script:
+
+```bash
+source test_data_2.sql
+```
+
+If the above worked, you will now also see youself as a student and that you have a grade of VG.
