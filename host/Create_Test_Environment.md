@@ -26,6 +26,11 @@ Optional Advanced Activities: Perform more advanced configuration for the mySql 
 Docker compose is a tool allowing us to more easily manage the creation of several docker container at the same time.
 We will use the tool docker compose to create two of the containers.
 
+First, please see this 12 minute [YouTube Docker Tutorial[(https://www.youtube.com/watch?v=YFl2mCHdv24&t=168s).
+
+Then please see this 18 minute [YouTube Docker Compose Tutorial](https://www.youtube.com/watch?v=HUpIoF_conA&t=717s).
+Now, you will execute docker compose.
+
 1. Change to the directory Lab2
 
 If stuck, here is the hint.
@@ -138,7 +143,8 @@ You need to first set an environment variable.
 ```bash
 OVPN_DATA="ovpn-data-example"
 ```
-Then you need to create a volume.
+
+hen you need to create a volume.
 
 ```bash
 docker volume create --name $OVPN_DATA
@@ -163,8 +169,10 @@ docker run -v $OVPN_DATA:/etc/openvpn \
 
 The above will prompt you as following, and you can answer as the following shows:
 
-Enter New CA Key Passphrase: phrase22 
-Re-Enter New CA Key Passphrase: 
+Enter New CA Key Passphrase: phrase22
+
+Re-Enter New CA Key Passphrase: phrase22
+
 Common Name: Easy-RSA CA
 
 The cryptograhic keys will then be generated, which will take a few minutes.
