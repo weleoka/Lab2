@@ -462,7 +462,7 @@ If stuck, here is the hint:
 ```bash
 curl 172.17.0.3
 
-# As an easier alternate alternate, you could use curl localhost, if the port mapping is working.
+# As an easier alternate alternate, you could use "curl localhost", if the port mapping is working.
 ```
 
 You have now done the installation and the basic configuration, for BugZilla.
@@ -478,8 +478,17 @@ Email: Admin101@ToddBooth.Com
 Administrator pw: bugsbugs
 
 This will bring you to the Administrator's web page.
+Accessing the administrators page means that the BugZilla server is working properly.
 
-Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
+Please see all the video tutorials at the following [YouTube Web Page Playlist](https://www.youtube.com/playlist?list=PLd43cTxFZWlflQiIdhCNcxJ0XFEouK-Bi).
+
+Then review the official BugZilla document guide, which is found at the [Following URL](https://www.bugzilla.org/docs/2.16/html/).
+You should carefully review the 2. Introduction and 3. Using BugZilla sections.
+Please carefully review the 3.1.3 Life Cycle of a Bug, which is in a flowchart format.
+
+## Optional Activities for Advanced Students
+
+Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
 
 There will be more steps to the lab, however you'll need to get bugzilla installed and configured first.
