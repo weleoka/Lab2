@@ -461,6 +461,8 @@ If stuck, here is the hint:
 
 ```bash
 curl 172.17.0.3
+
+# As an easier alternate alternate, you could use curl localhost, if the port mapping is working.
 ```
 
 You have now done the installation and the basic configuration, for BugZilla.
@@ -481,5 +483,6 @@ Optional Activity for advanced students: Add a few more docker containers to the
 To find candidates, surf to https://hub.docker.com and use the search field.
 
 There will be more steps to the lab, however you'll need to get bugzilla installed and configured first.
+If you want to be a tester, when you get BugZilla working, let Todd know, and he'll send you the next few steps in the lab.
 
 Good Luck, Teacher Todd
