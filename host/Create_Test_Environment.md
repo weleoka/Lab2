@@ -267,8 +267,8 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 
 ## Step 7. Install the BugZilla Bug Tracking Server
 
-Prior to installing BugZilla, you should configure your firewall.
-Todd will update this file with those instructions soon.
+Prior to installing BugZilla, it is recommended that you first configure your Amazon AWS firewall.
+Todd provided information, how to do that, in the create VM Guest host video tutorials.
 
 Download a copy of the BugZilla GitHub files.
 
