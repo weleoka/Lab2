@@ -258,6 +258,15 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 
 ## Step 7. Install BugZilla Gug Tracking Server
 
+There is a compatibility problem between the Web server and the BugZilla server, since both are competing for port 80.
+So you need to remove your Web server before continuing below.
+
+If stuck, here is the hint:
+
+```bash
+docker rm -f web
+```
+
 Download a copy of the BugZilla GitHub files.
 
 ```bash
@@ -446,10 +455,10 @@ If stuck, here is the hint:
 curl 172.17.0.3
 ```
 
+You have now done the installation and the basic configuration, for BugZilla.
+
 Now access the bugzilla container from a regular browser.
 From the SSH clint, start up a Web browser, and surf to the public IP address of your Host.
-
-You have now done the installation and the basic configuration, for BugZilla.
 
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
