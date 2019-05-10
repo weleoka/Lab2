@@ -477,11 +477,9 @@ Administrator pw: bugsbugs
 
 This will bring you to the Administrator's web page.
 
-You should then click on the "Parameter" link and configure the parameters:
-
 Optional Activity for advanced students: Add a few more docker containers to the docker compose file.
 To find candidates, surf to https://hub.docker.com and use the search field.
 
-There will be more steps to the lab 2, however you'll need to get bugzilla installed and configured first.
+There will be more steps to the lab, however you'll need to get bugzilla installed and configured first.
 
 Good Luck, Teacher Todd
