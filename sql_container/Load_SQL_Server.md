@@ -103,13 +103,11 @@ nano test_data_2.sql
 In the test data file, add a student row, with your name and student ID.
 Add a grade row, where you received a VG.
 When you are done editing the new file, copy the new file to the container.
+Enter these commands, to load your own test data.
 
 ```bash
-cd ~/Lab2/sql_container
-docker cp test_data_2.sql sql:root/.
+cd ~/Lab2/sql_containerql sql:root/.
 ```
 
-Follow the above instructions, regarding loading test data, to load your own test data.
 Review the test_data_2.sql to see how to write an SQL Query, which displays a given student record.
 Then execute your own SQL Query, which displays only your student record and grade.
-
