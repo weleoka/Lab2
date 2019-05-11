@@ -450,6 +450,7 @@ If stuck, here is the hint:
 ```bash
 # You need to first exit the container, with "exit".
 # Now you are on the Host
+
 # There is a port mapping from the localhost to the container, so we can access the Host via localhost to get to the container.
 curl localhost
 ```
@@ -479,7 +480,6 @@ Let's suppose your public IP address is 190.1.2.3.
 Then you should enter into the firewall "190.1.2.3/32".  Then click on the Save button (lower left).
 
 If your ISP changes your public IP address, contact Todd and he'll provide you with some additional information.
-
 
 From your SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 Click on the Log in button.
