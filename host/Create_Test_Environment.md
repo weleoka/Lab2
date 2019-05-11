@@ -425,9 +425,10 @@ $db_pass = 'bugsbugs';
 
 Save the file and quit Nano.
 
-Run the init script again
+Run the checksetup.pl script.  
+This will attempt to create the database and tables for BugZilla.
 
-If stuck, here is the hint again:
+If stuck, here is the hint:
 
 ```bash
 ./checksetup.pl
@@ -447,13 +448,39 @@ Now test bugszilla to try and access the default homepage.
 If stuck, here is the hint:
 
 ```bash
-# There is a port mapping from the localhost to the container
+# You need to first exit the container, with "exit".
+# Now you are on the Host
+# There is a port mapping from the localhost to the container, so we can access the Host via localhost to get to the container.
 curl localhost
 ```
 
 You have now done the installation and the basic configuration, for BugZilla.
 
 Now access the bugzilla container from a regular browser.
+
+First, you should open up the AWS firewall, to allow port 80 access.
+However, we will open up the firewall, for all traffic from your SSH client.
+
+1. Login to AWS, and then to workarea console.
+2. Click on EC2.
+3. Click on instances (on the left)
+4. Click on your specific instance (at the top)
+5. Click on Security Group -> launch-wizard-1 (lower left)
+6. Click on the Inbound button (lower left)
+7. Click Edit (lower left)
+8. Click Add Rule button (left)
+9. Under Type, choose "All Traffic".
+10. Under Source, enter your public IP address, for your SSH client, follow by /32
+
+To get your public IP address, surf to http://WhatIsMyIpAddress.com
+
+Let's suppose your public IP address is 190.1.2.3.
+
+Then you should enter into the firewall "190.1.2.3/32".  Then click on the Save button (lower left).
+
+If your ISP changes your public IP address, contact Todd and he'll provide you with some additional information.
+
+
 From your SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 Click on the Log in button.
 
