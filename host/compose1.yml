@@ -10,7 +10,7 @@ services:
     hostname: mysql
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=pw
+      - MYSQL_ROOT_PASSWORD=bugsbugs
     
   web:
     container_name: web

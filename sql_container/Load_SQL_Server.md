@@ -40,7 +40,7 @@ apt install -y mysql-client
 
 ## Step 6. Login to MySQL Server.  
 
-When prompted, the password is "pw".  Here is the command:
+When prompted, the password is "bugsbugs".  Here is the command:
 
 ```bash
 mysql -p
@@ -128,7 +128,7 @@ cd /root
 ```
 
 Execute the MySql client.
-When prompted, the password is "pw".  Here is the command:
+When prompted, the password is "bugsbugs".  Here is the command:
 
 ```bash
 mysql -p

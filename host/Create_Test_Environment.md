@@ -268,18 +268,16 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 ## Step 7. Install the BugZilla Bug Tracking Server
 
 Prior to installing BugZilla, it is recommended that you first configure your Amazon AWS firewall.
-Todd provided information, how to do that, in the create VM Guest host video tutorials.
+Todd provided information, how to do that, in the create Host video tutorials.
+Note that BugZilla has a MySQL server which is different than the previous MySQL server you setup for the test environment.
 
 Download a copy of the BugZilla GitHub files.
 
 ```bash
 cd
 git clone https://github.com/chardek/docker-bugzilla.git
-```
 
-Change to the new directory
-
-```bash
+# Change to the new directory
 cd docker-bugzilla
 ```
 
@@ -331,10 +329,11 @@ If stuck, here is the hint:
 # first, enter into the container
 docker exec -it bugzilla bash
 
+# run checkup
 ./checksetup.pl
 ```
 
-You'll see an error that there is a problem with MySQL, which is perhaps not running.
+You'll see an error that there is a problem connecting to MySQL, which is perhaps not running.
 So let's install MySQL server.
 
 If stuck, here is the hint.
@@ -345,8 +344,7 @@ apt install -y mysql-server
 ```
 
 There is a prompt for the MySQL root user's password.
-Enter what you want.
-For these instructions, it will be assumed you entered, "bugs".
+For these instructions, it will be assumed you entered, "bugsbugs".
 
 After the above completes, try running ./checksetup.pl again.
 
@@ -391,21 +389,22 @@ If stuck, here is the hint again:
 ./checksetup.pl
 ```
 
-It still fails.
-We need to create the user bugs and give bugs all privleges.
+The connect to MySQL errors are gone.
+However, we have an "Access denied", which we need to fix.
+We need to create the user bugs and give bugs all rights.
 
 If stuck, here is the hint:
 
 ```bash
-# use the password, bugs
+# use the password, bugsbugs
 mysql -p
 
-# The last field, 'bugs' is the password
-GRANT ALL PRIVILEGES ON *.* TO 'bugs'@'localhost' IDENTIFIED BY 'bugs';
+# The last field, 'bugsbugs' is the password
+GRANT ALL PRIVILEGES ON *.* TO 'bugs'@'localhost' IDENTIFIED BY 'bugsbugs';
 quit
 ```
 
-# You need to change the default password to bugs in the localconfig file
+You need to change the default password to bugsbugs in the localconfig file
 
 You'll need to first install an editor
 
@@ -418,11 +417,11 @@ apt install -y nano
 nano localconfig
 ```
 
-# find and edit the line to the following:
+find and edit the line to the following:
 $webservergroup = 'www-data';
 
-# find and edit the line to the following:
-$db_pass = 'bugs';
+find and edit the line to the following:
+$db_pass = 'bugsbugs';
 
 Save the file and quit Nano.
 
@@ -443,48 +442,62 @@ For the password, use the following:
 
 Administrator pw: bugsbugs
 
-Now test bugszilla to see what web page is default homepage is returned.
-
-In a new session, get access to the Host.
-
-Find the IPAddress of the bugzilla container.
+Now test bugszilla to try and access the default homepage.
 
 If stuck, here is the hint:
 
 ```bash
-docker inspect bugzilla | grep IPAddress
-```
-
-Using the bugzilla IPAddress, simulate a user requesting the homepage, with curl.
-
-If stuck, here is the hint:
-
-```bash
-curl 172.17.0.3
-
-# As an easier alternate alternate, you could use "curl localhost", if the port mapping is working.
+# There is a port mapping from the localhost to the container
+curl localhost
 ```
 
 You have now done the installation and the basic configuration, for BugZilla.
 
 Now access the bugzilla container from a regular browser.
-From the SSH client node, start up a Web browser, and surf to the public IP address of your Host.
+From your SSH client node, start up a Web browser, and surf to the public IP address of your Host.
+Click on the Log in button.
 
 Then enter your Adminstrator email and password, into the login box.
 Todd used:
 
+For the email and password, enter whatever you entered above.
+Here is what Todd entered above:
+
 Email: Admin101@ToddBooth.Com
 
-Administrator pw: bugsbugs
+Password: bugsbugs
 
 This will bring you to the Administrator's web page.
 Accessing the administrators page means that the BugZilla server is working properly.
+You need to configure the urlbase, administrators web page.
 
-Please see all the video tutorials at the following [YouTube Web Page Playlist](https://www.youtube.com/playlist?list=PLd43cTxFZWlflQiIdhCNcxJ0XFEouK-Bi).
+Click on the urlbase button.  Change the urlbase, to the following, but change the IP address to your public host IP address:
+
+http://1.1.1.1/bugzilla/
+
+Then at the bottom left, click on the Save Changes button.
+
+Then surf again to the default web page, but change the IP address to your public host IP address:
+
+http://1.1.1.1
+
+Then please see all the video tutorials at the following [YouTube Web Page Playlist](https://www.youtube.com/playlist?list=PLd43cTxFZWlflQiIdhCNcxJ0XFEouK-Bi).
 
 Then review the official BugZilla document guide, which is found at the [Following URL](https://www.bugzilla.org/docs/2.16/html/).
 You should carefully review the 2. Introduction and 3. Using BugZilla sections.
 Please carefully review the 3.1.3 Life Cycle of a Bug, which is in a flowchart format.
+
+Before reporting a bug, please read the Bug Writing Guidelines, please look at the list of most frequently reported bugs, and please search for the bug.
+You will see these options after you click on the File a Bug icon/button.
+
+Click on File a Bug
+
+Enter more detailed information, about the bug.
+
+Include any file attachment, as part of the bug report.
+You need to attach a small file, so a Text file is recommended.
+
+Submit the bug, and verify that "The bug was created successfuly".
 
 ## Optional Activities for Advanced Students
 
