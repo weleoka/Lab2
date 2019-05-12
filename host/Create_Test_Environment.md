@@ -15,9 +15,10 @@ You will install all the server software and perform a basic configuration of th
 However, you will install Bugzilla but not configure or use it.
 
 The instructions will ask you to do something.  
-Try to do things without reading the details hints.
+Try to do things without reading the detailed hints.
 I.E., only use the details hints when you get stuck.
 If anything does not work properly, please send Todd an email.
+If this is still too hard for you, ask Todd to create a video tutorial of this Lab 2.
 
 Optional Advanced Activities: Perform more advanced configuration for the mySql Web, VPN, DNS, and/or the Bugzilla servers
 
@@ -43,7 +44,7 @@ cd ~/Lab2/host
 
 Try to understand the docker compose file.
 
-If stuck, here is the hint, on one way to review it
+If stuck, here is a hint, on one way to review it
 
 ```bash
 less compose1.yml
@@ -89,7 +90,7 @@ docker logs web
 docker logs mysql-test
 ```
 
-How would you delete all test environment containers, in order to start over?
+If you needed to, how would you delete all test environment containers, in order to start over?
 
 If stuck, here is the hint.
 
@@ -109,12 +110,11 @@ Todd reviewed several YouTube tmux videos but didn't like them.
 In this task, you will verify that the Web Server is running and serving web pages.
 We will use a command line tool to make a request to get a Web page.
 The tool is called curl.
+What curl does, is simulate a user making Web browser requests.
 
 Since curl is not a Web browser, you will see all the html tags.
 I.E., curl reads, but does not render HTML code.
 Use curl to retrieve the home web page.
-
-If stuck, here is the hint.
 
 Note that the Web server was started on port 81, so that it does not conflict with the upcoming BugZilla Web server, which runs on port 80.
 The compose1.yml file did a port mapping from port 81 on the host to port 80 on the container.
@@ -127,14 +127,37 @@ If stuck, here is the hint.
 curl localhost:81
 ```
 
-It should return the following raw HTML information (I.E., the html is not rendered):
+It should return the following raw HTML information (I.E., the HTML is not rendered):
 
-<html><body><h1>It works!</h1></body></html>
+It works! (with HTML tags)
+
+Next, you should open up the AWS firewall, to allow port 80 and port 81 access.
+However, we will open up the firewall, for all traffic from your SSH client.
+
+1. Login to AWS, and then to workarea console.
+2. Click on EC2.
+3. Click on instances (on the left)
+4. Click on your specific instance (at the top)
+5. Click on Security Group -> launch-wizard-1 (lower left)
+6. Click on the Inbound button (lower left)
+7. Click Edit (lower left)
+8. Click Add Rule button (left)
+9. Under Type, choose "All Traffic".
+10. Under Source, enter your public IP address, for your SSH client, follow by /32
+
+To get your public IP address, surf to http://WhatIsMyIpAddress.com
+
+Let's suppose your public IP address is 190.1.2.3.
+
+Then you should enter into the firewall "190.1.2.3/32".  Then click on the Save button (lower left).
+If you work in a group, entere the public IP Addresses of all students.
+
+If your ISP changes your public IP address, contact Todd and he'll provide you with some additional information.
 
 Now from your client, start a Web brower and in the URL field, enter the IP address of your host with the port 81 at the end.
-Here is an example:
+Here is an example (note http, not https):
 
-1.1.1.1:81
+http://1.1.1.1:81
 
 You should see, "It works!"
 
@@ -145,7 +168,7 @@ The docker compose started most containers, but did not start the OpenVPN contai
 Try to follow the Web page directions on your own to create the OpenVPN Container.
 [Here is the URL](https://hub.docker.com/r/kylemanna/openvpn).
 
-If stuck, here is the hint.
+If stuck, here are the hints.
 
 You need to first set an environment variable.
 
@@ -153,7 +176,7 @@ You need to first set an environment variable.
 OVPN_DATA="ovpn-data-example"
 ```
 
-hen you need to create a volume.
+You then need to create a volume.
 
 ```bash
 docker volume create --name $OVPN_DATA
@@ -459,28 +482,6 @@ You have now done the installation and the basic configuration, for BugZilla.
 
 Now access the bugzilla container from a regular browser.
 
-First, you should open up the AWS firewall, to allow port 80 access.
-However, we will open up the firewall, for all traffic from your SSH client.
-
-1. Login to AWS, and then to workarea console.
-2. Click on EC2.
-3. Click on instances (on the left)
-4. Click on your specific instance (at the top)
-5. Click on Security Group -> launch-wizard-1 (lower left)
-6. Click on the Inbound button (lower left)
-7. Click Edit (lower left)
-8. Click Add Rule button (left)
-9. Under Type, choose "All Traffic".
-10. Under Source, enter your public IP address, for your SSH client, follow by /32
-
-To get your public IP address, surf to http://WhatIsMyIpAddress.com
-
-Let's suppose your public IP address is 190.1.2.3.
-
-Then you should enter into the firewall "190.1.2.3/32".  Then click on the Save button (lower left).
-
-If your ISP changes your public IP address, contact Todd and he'll provide you with some additional information.
-
 From your SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 Click on the Log in button.
 
@@ -535,3 +536,8 @@ There will be more steps to the lab, however you'll need to get bugzilla install
 If you want to be a tester, when you get BugZilla working, let Todd know, and he'll send you the next few steps in the lab.
 
 Good Luck, Teacher Todd
+
+<!-- comment 
+line 1
+line 2
+-->
