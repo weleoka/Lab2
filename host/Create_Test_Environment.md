@@ -527,6 +527,9 @@ You need to attach a small file, so a Text file is recommended.
 
 Submit the bug, and verify that "The bug was created successfuly".
 
+Note: In this BugZilla lab, we didn't setup email support, so it is not possible to add a new user.
+Therefore, file bugs when logged in as the Administrator.
+
 ## Optional Activities for Advanced Students
 
 Add a few more docker containers to the docker compose file.
@@ -538,6 +541,4 @@ If you want to be a tester, when you get BugZilla working, let Todd know, and he
 Good Luck, Teacher Todd
 
 <!-- comment 
-line 1
-line 2
 -->
