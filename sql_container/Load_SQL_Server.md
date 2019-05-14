@@ -7,7 +7,7 @@ Perform the following in order to load the SQL Server with the initial test data
 
 The instructions were provided previously.
 
-## Step 2. Use Docker compose to start all containers (
+## Step 2. Use Docker compose to start some containers
     
 The instructions were provided in the file host/Create_Test_Environment.md.
 
@@ -87,6 +87,9 @@ git pull
 
 However, if you modify files, they will conflict with Todd's updated files.
 So instead, you will make copies of Todd's files, and then you will update your own files.
+
+Type "exit" to quit the container and return to the Host.
+
 First, on the Host, please make copies of the following file:
 
 ```bash
