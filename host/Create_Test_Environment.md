@@ -32,7 +32,7 @@ First, please see this 12 minute [YouTube Docker Tutorial[(https://www.youtube.c
 Then please see this 18 minute [YouTube Docker Compose Tutorial](https://www.youtube.com/watch?v=HUpIoF_conA&t=717s).
 Now, you will execute docker compose.
 
-1. Change to the directory Lab2
+1. Change to the directory Lab2/host
 
 If stuck, here is the hint.
 
