@@ -110,7 +110,7 @@ Todd reviewed several YouTube tmux videos but didn't like them.
 In this task, you will verify that the Web Server is running and serving web pages.
 We will use a command line tool to make a request to get a Web page.
 The tool is called curl.
-What curl does, is simulate a user making Web browser requests.
+What curl does, is simulate a user making Web requests.
 
 Since curl is not a Web browser, you will see all the html tags.
 I.E., curl reads, but does not render HTML code.
@@ -132,7 +132,7 @@ It should return the following raw HTML information (I.E., the HTML is not rende
 It works! (with HTML tags)
 
 Next, you should open up the AWS firewall, to allow port 80 and port 81 access.
-However, we will open up the firewall, for all traffic from your SSH client.
+However, we will open up the firewall, for all traffic from your own computer, which is your SSH client.
 
 1. Login to AWS, and then to workarea console.
 2. Click on EC2.
@@ -154,7 +154,7 @@ If you work in a group, entere the public IP Addresses of all students.
 
 If your ISP changes your public IP address, contact Todd and he'll provide you with some additional information.
 
-Now from your client, start a Web brower and in the URL field, enter the IP address of your host with the port 81 at the end.
+Now from your client (home computer), start a Web brower in the normal way you always do, and in the URL field, enter the IP address of your host with the port 81 at the end.
 Here is an example (note http, not https):
 
 http://1.1.1.1:81
@@ -500,7 +500,7 @@ curl localhost
 
 You have now done the installation and the basic configuration, for BugZilla.
 
-Now access the bugzilla container from a regular browser.
+Now access the bugzilla container from a web browser, in the normal way you always do.
 
 From your SSH client node, start up a Web browser, and surf to the public IP address of your Host.
 Click on the Log in button.
