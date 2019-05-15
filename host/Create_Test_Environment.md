@@ -514,6 +514,8 @@ http://1.1.1.1
 
 Then please see all the video tutorials at the following [YouTube Web Page Playlist](https://www.youtube.com/playlist?list=PLd43cTxFZWlflQiIdhCNcxJ0XFEouK-Bi).
 
+Please see the following BugZilla for beginner's [Web Page](https://www.guru99.com/bugzilla-tutorial-for-beginners.html).
+
 Then review the official BugZilla document guide, which is found at the [Following URL](https://www.bugzilla.org/docs/2.16/html/).
 You should carefully review the 2. Introduction and 3. Using BugZilla sections.
 Please carefully review the 3.1.3 Life Cycle of a Bug, which is in a flowchart format.
