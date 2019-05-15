@@ -294,12 +294,13 @@ In this part of the lab your job is to set up the bug tracker and the system we 
 After setup, you will enter one or more bugs into the tracker system.  To achieve this you are going to use AWS and Docker, there are docker containers for everything needed but you might have to edit some configurations for things to work. Use the Docker documentation to get started.
 
 There might not be enough RAM (memory) on your Host for BugZilla and the previous containers, at the same time.
-So, please remove the previous containers.
+So, please stop the previous containers.
+If you need to start them again, use the docker start command.
 
 If you are stuck, here is the hint:
 
 ```bash
-docker rm -f mysql-test web vpn dns
+docker stop mysql-test web vpn dns
 ```
 
 During this lab, you can check your memory with top.
