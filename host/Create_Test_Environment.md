@@ -291,7 +291,7 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 ## Step 7. Install the BugZilla Bug Tracking Server
 
 In this part of the lab your job is to set up the bug tracker and the system we are going to test.
-After setup, you will enter one or more bugs into the tracker system.
+After setup, you will enter one or more bugs into the tracker system.  To achieve this you are going to use AWS and Docker, there are docker containers for everything needed but you might have to edit some configurations for things to work. Use the Docker documentation to get started.
 
 Prior to installing BugZilla, it is recommended that you first configure your Amazon AWS firewall.
 Todd provided information, how to do that, in the create Host video tutorials.
