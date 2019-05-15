@@ -20,7 +20,8 @@ If you are stuck, here is the hint:
 top
 ```
 
-If you need to restart your computer, you will need to do the following:
+If you can surf to BugZilla, but you get a resource error message, as a last resort, you can try restarting the AWS Host computer.
+If you restart your AWS Host computer, you will need to do the following:
 
 ```bash
 # Check if BugZilla is running
