@@ -293,6 +293,22 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 In this part of the lab your job is to set up the bug tracker and the system we are going to test.
 After setup, you will enter one or more bugs into the tracker system.  To achieve this you are going to use AWS and Docker, there are docker containers for everything needed but you might have to edit some configurations for things to work. Use the Docker documentation to get started.
 
+There might not be enough RAM (memory) on your Host for BugZilla and the previous containers, at the same time.
+So, please remove the previous containers.
+
+If you are stuck, here is the hint:
+
+```bash
+docker rm -f mysql-test web vpn dns
+```
+
+During this lab, you can check your memory with top.
+If you are stuck, here is the hint:
+
+```bash
+top
+```
+
 Prior to installing BugZilla, it is recommended that you first configure your Amazon AWS firewall.
 Todd provided information, how to do that, in the create Host video tutorials.
 Note that BugZilla has a MySQL server which is different than the previous MySQL server you setup for the test environment.
