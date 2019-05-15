@@ -290,6 +290,9 @@ If it worked, you should get back the IP address 93.184.216.34, which is the IP 
 
 ## Step 7. Install the BugZilla Bug Tracking Server
 
+In this part of the lab your job is to set up the bug tracker and the system we are going to test.
+After setup, you will enter one or more bugs into the tracker system.
+
 Prior to installing BugZilla, it is recommended that you first configure your Amazon AWS firewall.
 Todd provided information, how to do that, in the create Host video tutorials.
 Note that BugZilla has a MySQL server which is different than the previous MySQL server you setup for the test environment.
